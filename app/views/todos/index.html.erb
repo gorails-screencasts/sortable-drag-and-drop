@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-sm-6">
+    <h1>Todos</h1>
+  </div>
+
+  <div class="col-sm-6 text-right">
+    <%= link_to new_todo_path, class: 'btn btn-primary' do %>
+      Add New Todo
+    <% end %>
+  </div>
+</div>
+
+<div data-controller="drag" data-drag-url="/todos/:id/move">
+  <% @todos.order(position: :asc).each do |todo| %>
+    <div data-id="<%= todo.id %>" class="card card-body mb-4">
+      <%= todo.description %>
+    </div>
+  <% end %>
+</div>
